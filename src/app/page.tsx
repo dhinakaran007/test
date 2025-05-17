@@ -16,6 +16,10 @@ export default function Home() {
     }
   }, [connected, router]);
 
+  const navigateToWelcome = () => {
+    router.push('/welcome');
+  }
+
   return (
     <>
       <h1>MQTT Client</h1>
@@ -31,7 +35,25 @@ export default function Home() {
         You can publish messages to the topic and see them in real-time.
       </p>
 
-      {connected && <p>✅ Connected! Redirecting to welcome page...</p>}
+      {connected && (
+        <div style={{ marginTop: '1rem' }}>
+          <p>✅ Connected!</p>
+          <button 
+            onClick={navigateToWelcome}
+            style={{
+              padding: '0.5rem 1rem',
+              backgroundColor: '#0070f3',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              marginTop: '0.5rem'
+            }}
+          >
+            Go to Welcome Page
+          </button>
+        </div>
+      )}
     </>
   );
 }
